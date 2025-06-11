@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPL 1 SMKN 64</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
     <style>
         :root {
             --bg-color: #121212;
-            --primary-color: #00A9FF;
-            --secondary-color: #1E1E1E;
-            --text-color: #E0E0E0;
+            --primary-color: #00a9ff;
+            --secondary-color: #1e1e1e;
+            --text-color: #e0e0e0;
             --text-muted-color: #888;
-            --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             --section-padding: 80px 0;
             --border-radius: 12px;
         }
@@ -39,7 +39,12 @@
             color: #ffffff;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-weight: 700;
             color: #ffffff;
         }
@@ -61,7 +66,7 @@
         }
 
         .section-title::after {
-            content: '';
+            content: "";
             position: absolute;
             bottom: 0;
             left: 50%;
@@ -105,7 +110,7 @@
         }
 
         .navbar-nav .nav-link::after {
-            content: '';
+            content: "";
             position: absolute;
             bottom: -5px;
             left: 0;
@@ -124,7 +129,7 @@
             position: relative;
             height: 100vh;
             width: 100%;
-            background: url('foto/IMG_0387.webp') no-repeat center center/cover;
+            background: url("foto/IMG_0387.webp") no-repeat center center/cover;
             color: white;
             overflow: hidden;
         }
@@ -150,6 +155,29 @@
             margin-top: 20px;
         }
 
+        .hero-bg-fade {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-overlay {
+            z-index: 1;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
         .btn-brand {
             background-color: var(--primary-color);
             color: white;
@@ -171,9 +199,18 @@
             transform: translateY(30px);
             animation: fadeInSlideUp 1s forwards;
         }
-        .hero-title.animate-on-load { animation-delay: 0.5s; }
-        .hero-subtitle.animate-on-load { animation-delay: 0.8s; }
-        .btn-brand.animate-on-load { animation-delay: 1.1s; }
+
+        .hero-title.animate-on-load {
+            animation-delay: 0.5s;
+        }
+
+        .hero-subtitle.animate-on-load {
+            animation-delay: 0.8s;
+        }
+
+        .btn-brand.animate-on-load {
+            animation-delay: 1.1s;
+        }
 
         @keyframes fadeInSlideUp {
             to {
@@ -187,6 +224,7 @@
             transform: translateY(50px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+
         .fade-in-up.is-visible {
             opacity: 1;
             transform: translateY(0);
@@ -198,8 +236,9 @@
             padding: 40px 0;
             width: 100%;
         }
+
         .timeline::before {
-            content: '';
+            content: "";
             position: absolute;
             left: 50%;
             top: 0;
@@ -208,23 +247,27 @@
             background: var(--secondary-color);
             transform: translateX(-50%);
         }
+
         .timeline-item {
             position: relative;
             margin-bottom: 50px;
             width: 50%;
         }
+
         .timeline-item:nth-child(odd) {
             padding-right: 50px;
             text-align: right;
             left: 0;
         }
+
         .timeline-item:nth-child(even) {
             padding-left: 50px;
             text-align: left;
             left: 50%;
         }
+
         .timeline-dot {
-            content: '';
+            content: "";
             position: absolute;
             top: 20px;
             height: 16px;
@@ -233,29 +276,35 @@
             border-radius: 50%;
             border: 3px solid var(--bg-color);
         }
+
         .timeline-item:nth-child(odd) .timeline-dot {
             right: -8px;
             transform: translate(50%, -50%);
         }
+
         .timeline-item:nth-child(even) .timeline-dot {
             left: -8px;
             transform: translate(-50%, -50%);
         }
+
         .timeline-content {
             background-color: var(--secondary-color);
             padding: 30px;
             border-radius: var(--border-radius);
             transition: transform 0.3s ease;
         }
+
         .timeline-content:hover {
             transform: translateY(-5px);
         }
+
         .timeline-date {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--primary-color);
             margin-bottom: 10px;
         }
+
         .timeline-content h3 {
             margin-top: 0;
         }
@@ -269,7 +318,9 @@
             padding: 8px 20px;
             transition: all 0.3s ease;
         }
-        .btn-filter:hover, .btn-filter.active {
+
+        .btn-filter:hover,
+        .btn-filter.active {
             background-color: var(--primary-color);
             color: white;
             border-color: var(--primary-color);
@@ -281,22 +332,25 @@
             border-radius: var(--border-radius);
             cursor: pointer;
         }
+
         .gallery-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
+
         .gallery-card:hover img {
             transform: scale(1.1);
         }
+
         .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -305,6 +359,7 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
+
         .gallery-card:hover .gallery-overlay {
             opacity: 1;
         }
@@ -318,10 +373,12 @@
             position: relative;
             overflow: hidden;
         }
+
         .angkatan-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(0, 169, 255, 0.1);
         }
+
         .angkatan-img {
             width: 120px;
             height: 120px;
@@ -330,14 +387,17 @@
             border: 4px solid var(--bs-white);
             margin-bottom: 20px;
         }
+
         .angkatan-nama {
             margin-bottom: 5px;
         }
+
         .angkatan-posisi {
             color: var(--text-muted-color);
             font-size: 0.9rem;
             margin-bottom: 15px;
         }
+
         .social-links a {
             color: var(--text-muted-color);
             margin: 0 8px;
@@ -352,24 +412,65 @@
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .section-title { font-size: 2rem; }
-            .timeline::before { left: 8px; transform: none; }
-            .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; text-align: left !important; left: 0 !important; }
-            .timeline-dot { left: 8px; transform: translate(-50%, -50%); }
-            .timeline-item:nth-child(even) { padding-left: 50px; }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 8px;
+                transform: none;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left !important;
+                left: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 8px;
+                transform: translate(-50%, -50%);
+            }
+
+            .timeline-item:nth-child(even) {
+                padding-left: 50px;
+            }
+        }
+
+        .zoom-icon {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-icon:hover {
+            transform: scale(1);
         }
     </style>
 </head>
-<body>
 
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="https://www.instagram.com/xiierpeelone">RPL 1 | SMKN 64'4</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>   
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -390,21 +491,28 @@
     </nav>
 
     <header id="hero" class="hero-section">
+        <div class="hero-bg-fade"></div>
+        <!-- Tambahan ini -->
         <div class="hero-overlay"></div>
         <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
             <h1 class="hero-title animate-on-load">Jejak Langkah RPL 1</h1>
-            <p class="hero-subtitle animate-on-load">Sebuah Perjalanan Tiga Tahun Penuh Karya dan Cerita di SMKN 64 Jakarta.</p>
+            <p class="hero-subtitle animate-on-load">
+                Sebuah Perjalanan Tiga Tahun Penuh Karya dan Cerita di SMKN 64
+                Jakarta.
+            </p>
             <a href="#sejarah" class="btn btn-brand mt-4 animate-on-load">Telusuri Kisah Kami</a>
         </div>
     </header>
-    
+
     <main>
         <section id="sejarah" class="section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h2 class="section-title">Lintas Waktu</h2>
-                        <p class="section-subtitle">Momen-momen penting dari kelas 10 hingga 12.</p>
+                        <p class="section-subtitle">
+                            Momen-momen penting dari kelas 10 hingga 12.
+                        </p>
                     </div>
                 </div>
                 <div class="timeline">
@@ -413,27 +521,37 @@
                         <div class="timeline-content">
                             <h3>Kelas 10: Awal Mula</h3>
                             <div class="timeline-date">2022 - 2023</div>
-                            <p>Pertama kali melangkah sebagai siswa RPL. Mempelajari dasar-dasar algoritma, HTML, CSS, dan JavaScript. Semangat baru dan pertemanan mulai terjalin di dunia kode.</p>
+                            <p>
+                                Pertama kali melangkah sebagai siswa RPL. Mempelajari
+                                dasar-dasar algoritma, HTML, CSS, dan JavaScript. Semangat
+                                baru dan pertemanan mulai terjalin di dunia kode.
+                            </p>
                         </div>
                     </div>
 
-
-                     <div class="timeline-item fade-in-up">
+                    <div class="timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <h3>Kelas 11: Pendalaman Materi</h3>
                             <div class="timeline-date">2023 - 2024</div>
-                            <p>Mulai masuk ke materi yang lebih kompleks seperti PHP, database MySQL, dan framework. Proyek-proyek pertama mulai dibuat, menguji logika dan kerja sama tim.</p>
+                            <p>
+                                Mulai masuk ke materi yang lebih kompleks seperti PHP,
+                                database MySQL, dan framework. Proyek-proyek pertama mulai
+                                dibuat, menguji logika dan kerja sama tim.
+                            </p>
                         </div>
                     </div>
-
 
                     <div class="timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <h3>Kelas 12: Puncak Perjuangan</h3>
                             <div class="timeline-date">2024 - 2025</div>
-                            <p>Fokus pada Uji Kompetensi Keahlian (UKK), pembuatan proyek akhir, dan persiapan menuju dunia kerja atau perguruan tinggi. Momen-momen terakhir yang penuh kenangan.</p>
+                            <p>
+                                Fokus pada Uji Kompetensi Keahlian (UKK), pembuatan proyek
+                                akhir, dan persiapan menuju dunia kerja atau perguruan tinggi.
+                                Momen-momen terakhir yang penuh kenangan.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -450,73 +568,133 @@
                 </div>
                 <div class="row">
                     <div class="col-12 text-center mb-4">
-                        <button class="btn btn-filter active" data-filter="all">Semua</button>
-                        <button class="btn btn-filter" data-filter="kelas10">Kelas 10</button>
-                        <button class="btn btn-filter" data-filter="kelas11">Kelas 11</button>
-                        <button class="btn btn-filter" data-filter="kelas12">Kelas 12</button>
+                        <button class="btn btn-filter active" data-filter="all">
+                            <i class="bi bi-grid-fill me-1"></i>
+                        </button>
+                        <button class="btn btn-filter" data-filter="kelas10">
+                            10
+                        </button>
+                        <button class="btn btn-filter" data-filter="kelas11">
+                            11
+                        </button>
+                        <button class="btn btn-filter" data-filter="kelas12">
+                            12
+                        </button>
                     </div>
                 </div>
                 <div class="row g-4" id="gallery-grid">
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas10">
-                         <div class="gallery-card">
-                            <img src="foto/IMG_20220923_112232.webp" class="img-fluid" alt="Galeri 2">
+                        <div class="gallery-card position-relative">
+                            <img src="foto/IMG_20220923_112232.webp" class="img-fluid" alt="Galeri 2"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/IMG_20220923_112232.webp" data-title="Tukang galer"
+                                data-desc="Kelas 10" />
                             <div class="gallery-overlay">
-                                <h5>Pro Player </h5>
+                                <h5>Tukang galer</h5>
                                 <p>Kelas 10</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/IMG_20220923_112232.webp" data-title="Tukang galer" data-desc="Kelas 10">
+                                <i class="bi bi-zoom-in"></i>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
-                         <div class="gallery-card">
-                            <img src="foto/PXL_20240605_130529530.NIGHT~5.webp" class="img-fluid" alt="Galeri 2">
+                        <div class="gallery-card position-relative">
+                            <img src="foto/PXL_20240605_130529530.NIGHT~5.webp" class="img-fluid" alt="Galeri 2"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/PXL_20240605_130529530.NIGHT~5.webp" data-title="Praktik Job Fair"
+                                data-desc="Kelas 11" />
                             <div class="gallery-overlay">
                                 <h5>Praktik Job Fair</h5>
                                 <p>Kelas 11</p>
                             </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/PXL_20240605_130529530.NIGHT~5.webp" data-title="Praktik Job Fair"
+                                data-desc="Kelas 11">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
                         </div>
                     </div>
+
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
-                        <div class="gallery-card">
-                           <img src="foto/IMG_2251.webp" class="img-fluid" alt="Galeri 2">
-                           <div class="gallery-overlay">
-                               <h5>HRD Job Fair RPL 1</h5>
-                               <p>Kelas 11</p>
-                           </div>
-                       </div>
-                   </div>
+                        <div class="gallery-card position-relative">
+                            <img src="foto/IMG_2251.webp" class="img-fluid" alt="Galeri 2" data-bs-toggle="modal"
+                                data-bs-target="#imageModal" data-img="foto/IMG_2251.webp"
+                                data-title="HRD Job Fair RPL 1" data-desc="Kelas 11" />
+                            <div class="gallery-overlay">
+                                <h5>HRD Job Fair RPL 1</h5>
+                                <p>Kelas 11</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/IMG_2251.webp" data-title="HRD Job Fair RPL 1" data-desc="Kelas 11">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
-                        <div class="gallery-card">
-                            <img src="foto/IMG_0387.webp" class="img-fluid" alt="Galeri 3">
+                        <div class="gallery-card position-relative">
+                            <img src="foto/IMG_0387.webp" class="img-fluid" alt="Galeri 3" data-bs-toggle="modal"
+                                data-bs-target="#imageModal" data-img="foto/IMG_0387.webp" data-title="Pelepasan RPL 1"
+                                data-desc="Kelas 12" />
                             <div class="gallery-overlay">
                                 <h5>Pelepasan RPL 1</h5>
                                 <p>Kelas 12</p>
                             </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/IMG_0387.webp" data-title="Pelepasan RPL 1" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
                         </div>
                     </div>
+
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
-                        <div class="gallery-card">
-                            <img src="foto/IMG_0138.webp" class="img-fluid" alt="Galeri 3">
+                        <div class="gallery-card position-relative">
+                            <img src="foto/IMG_0138.webp" class="img-fluid" alt="Galeri 3" data-bs-toggle="modal"
+                                data-bs-target="#imageModal" data-img="foto/IMG_0138.webp"
+                                data-title="Ujian Kompetensi RPL" data-desc="Kelas 12" />
                             <div class="gallery-overlay">
                                 <h5>Ujian Kompetensi RPL</h5>
                                 <p>Kelas 12</p>
                             </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/IMG_0138.webp" data-title="Ujian Kompetensi RPL" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- ITEM INI SUDAH SESUAI SEBELUMNYA -->
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
-                        <div class="gallery-card">
-                            <img src="foto/DSC_0587.webp" class="img-fluid" alt="Galeri 3">
+                        <div class="gallery-card position-relative">
+                            <img src="foto/DSC_0587.webp" class="img-fluid" alt="Galeri 3" data-bs-toggle="modal"
+                                data-bs-target="#imageModal" data-img="foto/DSC_0587.webp" data-title="Villa Bogor"
+                                data-desc="Kelas 12" />
                             <div class="gallery-overlay">
                                 <h5>Villa Bogor</h5>
                                 <p>Kelas 12</p>
                             </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/DSC_0587.webp" data-title="Villa Bogor" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
                         </div>
                     </div>
+
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
-                        <div class="gallery-card">
-                            <img src="foto/IMG_9796.webp" class="img-fluid" alt="Galeri 4">
+                        <div class="gallery-card position-relative">
+                            <img src="foto/IMG_9796.webp" class="img-fluid" alt="Galeri 4" data-bs-toggle="modal"
+                                data-bs-target="#imageModal" data-img="foto/IMG_9796.webp" data-title="Job Fair Event"
+                                data-desc="Kelas 11" />
                             <div class="gallery-overlay">
                                 <h5>Job Fair Event</h5>
                                 <p>Kelas 11</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="foto/IMG_9796.webp" data-title="Job Fair Event" data-desc="Kelas 11">
+                                <i class="bi bi-zoom-in"></i>
                             </div>
                         </div>
                     </div>
@@ -525,149 +703,319 @@
         </section>
 
         <section id="angkatan" class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h2 class="section-title">Programmer - Coder</h2>
-                        <p class="section-subtitle">Para pejuang kode RPL 1.</p>
-                    </div>
-                </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-sm-6 col-lg-3 fade-in-up">
-                        <div class="angkatan-card">
-                            <img src="foto/apisbotak.jpg" alt="Anggota 1" class="angkatan-img">
-                            <div class="angkatan-info">
-                                <h5 class="angkatan-nama">Hafiz Free Fire</h5>
-                                <p class="angkatan-posisi">Ketua Kelas</p>
-                                <div class="social-links">
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 fade-in-up">
-                         <div class="angkatan-card">
-                            <img src="https://source.unsplash.com/random/400x400?person,female" alt="Anggota 2" class="angkatan-img">
-                            <div class="angkatan-info">
-                                <h5 class="angkatan-nama">Nama Siswa 2</h5>
-                                <p class="angkatan-posisi">Wakil Ketua</p>
-                                <div class="social-links">
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 fade-in-up">
-                         <div class="angkatan-card">
-                            <img src="https://source.unsplash.com/random/400x400?person,man" alt="Anggota 3" class="angkatan-img">
-                            <div class="angkatan-info">
-                                <h5 class="angkatan-nama">Nama Siswa 3</h5>
-                                <p class="angkatan-posisi">Sekretaris</p>
-                               <div class="social-links">
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 fade-in-up">
-                         <div class="angkatan-card">
-                            <img src="https://source.unsplash.com/random/400x400?person,woman" alt="Anggota 4" class="angkatan-img">
-                            <div class="angkatan-info">
-                                <h5 class="angkatan-nama">Nama Siswa 4</h5>
-                                <p class="angkatan-posisi">Bendahara</p>
-                                <div class="social-links">
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-github"></i></a>
-                                </div>
-                            </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Programmer - Coder</h2>
+                <p class="section-subtitle">Para pejuang kode RPL 1.</p>
+            </div>
+        </div>
+        <!-- Beri ID pada row ini agar mudah diakses JavaScript -->
+        <div class="row g-4 justify-content-center" id="angkatanGrid">
+            <!-- Tambahkan class 'angkatan-item' pada setiap kolom -->
+            <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                <div class="angkatan-card">
+                    <img src="foto/1.webp" alt="Anggota 1" class="angkatan-img" />
+                    <div class="angkatan-info">
+                        <h5 class="angkatan-nama">Afrizal Wiratanu</h5>
+                        <p class="angkatan-posisi">Absen 1</p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/afzlw.21/?next=%2F"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                <div class="angkatan-card">
+                    <img src="foto/2.webp" alt="Anggota 2" class="angkatan-img" />
+                    <div class="angkatan-info">
+                        <h5 class="angkatan-nama">Ahmad Budi Alfian</h5>
+                        <p class="angkatan-posisi">Absen 2</p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/nyonggsssssss/"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                <div class="angkatan-card">
+                    <img src="foto/3.webp" alt="Anggota 3" class="angkatan-img" />
+                    <div class="angkatan-info">
+                        <h5 class="angkatan-nama">Ammar Naufal Ariq</h5>
+                        <p class="angkatan-posisi">Absen 3</p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/fallxz.__/"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                <div class="angkatan-card">
+                    <img src="foto/4.webp" alt="Anggota 4" class="angkatan-img" />
+                    <div class="angkatan-info">
+                        <h5 class="angkatan-nama">Ahmad Hafidz</h5>
+                        <p class="angkatan-posisi">Absen 4</p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/hfzaja__/"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                <div class="angkatan-card">
+                    <img src="foto/1.webp" alt="Anggota 5" class="angkatan-img" />
+                    <div class="angkatan-info">
+                        <h5 class="angkatan-nama">Anggota 5</h5>
+                        <p class="angkatan-posisi">Absen 5</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                <div class="angkatan-card">
+                    <img src="foto/2.webp" alt="Anggota 6" class="angkatan-img" />
+                    <div class="angkatan-info">
+                        <h5 class="angkatan-nama">Anggota 6</h5>
+                        <p class="angkatan-posisi">Absen 6</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                <div class="angkatan-card">
+                    <img src="foto/3.webp" alt="Anggota 7" class="angkatan-img" />
+                    <div class="angkatan-info">
+                        <h5 class="angkatan-nama">Anggota 7</h5>
+                        <p class="angkatan-posisi">Absen 7</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                <div class="angkatan-card">
+                    <img src="foto/4.webp" alt="Anggota 8" class="angkatan-img" />
+                    <div class="angkatan-info">
+                        <h5 class="angkatan-nama">Anggota 8</h5>
+                        <p class="angkatan-posisi">Absen 8</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tambahkan button di sini -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <button id="showAllAngkatan" class="btn btn-brand">Tampilkan Semua</button>
+            </div>
+        </div>
+    </div>
+</section>
     </main>
-    
+
     <footer class="footer-section">
         <div class="container text-center">
             <p>© 2025 RPL 1 SMKN 64 Jakarta.</p>
         </div>
     </footer>
 
+    <!-- Modal Preview -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="imageModalLabel">Judul</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src class="img-fluid rounded" alt="Preview" />
+                    <p class="mt-3" id="modalDesc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
+        // === KODE YANG SUDAH ADA ===
+        const navbar = document.querySelector(".navbar");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
 
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
+        const scrollObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+            }
+        );
+
+        document.querySelectorAll(".fade-in-up").forEach((element) => {
+            scrollObserver.observe(element);
+        });
+
+        const filterButtons = document.querySelectorAll(".btn-filter");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                filterButtons.forEach((btn) => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                const filter = button.getAttribute("data-filter");
+
+                galleryItems.forEach((item) => {
+                    item.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+                    item.style.transform = "scale(0.9)";
+                    item.style.opacity = "0";
+                    item.style.display = "none";
+
+                    if (
+                        filter === "all" ||
+                        item.getAttribute("data-category") === filter
+                    ) {
+                        setTimeout(() => {
+                            item.style.display = "block";
+                            setTimeout(() => {
+                                item.style.transform = "scale(1)";
+                                item.style.opacity = "1";
+                            }, 50);
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                if (document.querySelector(this.getAttribute("href"))) {
+                    document.querySelector(this.getAttribute("href")).scrollIntoView({
+                        behavior: "smooth",
+                    });
+                }
+            });
+        });
+
+        const heroBackgrounds = [
+            "foto/IMG_0387.webp",
+            "foto/IMG_0138.webp",
+            "foto/DSC_0587.webp",
+            "foto/IMG_2251.webp",
+        ];
+        let currentIndex = 0;
+        const heroFadeEl = document.querySelector(".hero-bg-fade");
+
+        heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % heroBackgrounds.length;
+            heroFadeEl.style.opacity = 0;
+            setTimeout(() => {
+                heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
+                heroFadeEl.style.opacity = 1;
+            }, 1000); 
+        }, 4000);
+
+        // Kode Modal Image (sudah dipindah ke dalam event listener utama)
+        const imageModal = document.getElementById("imageModal");
+        if(imageModal){
+            const modalImage = document.getElementById("modalImage");
+            const modalTitle = document.getElementById("imageModalLabel");
+            const modalDesc = document.getElementById("modalDesc");
+    
+            document
+                .querySelectorAll('[data-bs-target="#imageModal"]')
+                .forEach((el) => {
+                    el.addEventListener("click", function () {
+                        const imgSrc = this.getAttribute("data-img");
+                        const title = this.getAttribute("data-title");
+                        const desc = this.getAttribute("data-desc");
+    
+                        modalImage.src = imgSrc;
+                        modalTitle.textContent = title;
+                        modalDesc.textContent = desc;
+                    });
+                });
+        }
+        
+        // === KODE BARU UNTUK TOMBOL ANGKATAN ===
+        const angkatanItems = document.querySelectorAll('.angkatan-item');
+        const showAllButton = document.getElementById('showAllAngkatan');
+        const limit = 4;
+        let isExpanded = false;
+
+        // Fungsi untuk menampilkan atau menyembunyikan item
+        const updateVisibility = () => {
+            angkatanItems.forEach((item, index) => {
+                if (index >= limit) {
+                    // Gunakan class d-none dari Bootstrap untuk menyembunyikan
+                    if(isExpanded) {
+                        item.classList.remove('d-none');
+                    } else {
+                        item.classList.add('d-none');
+                    }
                 }
             });
 
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, {
-                threshold: 0.1 
-            });
+            // Update teks tombol
+            showAllButton.textContent = isExpanded ? 'Tampilkan Lebih Sedikit' : 'Tampilkan Semua';
             
-            document.querySelectorAll('.fade-in-up').forEach(element => {
-                scrollObserver.observe(element);
+            // Sembunyikan tombol jika item lebih sedikit atau sama dengan batas
+            if (angkatanItems.length <= limit) {
+                showAllButton.classList.add('d-none');
+            }
+        };
+
+        // Tambahkan event listener pada tombol
+        if(showAllButton) {
+            showAllButton.addEventListener('click', () => {
+                // Toggle status
+                isExpanded = !isExpanded;
+                updateVisibility();
             });
-            
-            const filterButtons = document.querySelectorAll('.btn-filter');
-            const galleryItems = document.querySelectorAll('.gallery-item');
+        }
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
+        // Jalankan fungsi saat halaman pertama kali dimuat
+        updateVisibility();
+        // === AKHIR DARI KODE BARU ===
 
-                    const filter = button.getAttribute('data-filter');
-
-                    galleryItems.forEach(item => {
-                        item.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-                        item.style.transform = 'scale(0.9)';
-                        item.style.opacity = '0';
-                        item.style.display = 'none';
-
-                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                            setTimeout(() => {
-                                 item.style.display = 'block';
-                                 setTimeout(() => {
-                                    item.style.transform = 'scale(1)';
-                                    item.style.opacity = '1';
-                                 }, 50);
-                            }, 300);
-                        }
-                    });
-                });
-            });
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    if (document.querySelector(this.getAttribute('href'))) {
-                         document.querySelector(this.getAttribute('href')).scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-        });
-    </script>
+    }); // <-- kurung penutup dari event listener DOMContentLoaded utama
+</script>
 </body>
 </html>
