@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPL 1 SMKN 64</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+    <style>
+        :root {
+            --bg-color: #121212;
+            --primary-color: #00a9ff;
+            --secondary-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --text-muted-color: #888;
+            --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --section-padding: 80px 0;
+            --border-radius: 12px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            overflow-x: hidden;
+            line-height: 1.7;
+            transition: background-color 0.3s ease;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .section-padding {
+            padding: var(--section-padding);
+        }
+
+        .section-bg {
+            background-color: var(--secondary-color);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted-color);
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        .navbar {
+            background-color: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease, padding 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            background-color: var(--secondary-color);
+            padding: 8px 0;
+        }
+
+        .navbar .navbar-brand {
+            font-weight: 400;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: url("foto/IMG_0387.webp") no-repeat center center/cover;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-top: 20px;
+        }
+
+        .hero-bg-fade {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-overlay {
+            z-index: 1;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-brand {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-brand:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .animate-on-load {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1s forwards;
+        }
+
+        .hero-title.animate-on-load {
+            animation-delay: 0.5s;
+        }
+
+        .hero-subtitle.animate-on-load {
+            animation-delay: 0.8s;
+        }
+
+        .btn-brand.animate-on-load {
+            animation-delay: 1.1s;
+        }
+
+        @keyframes fadeInSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-filter:hover,
+        .btn-filter.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .angkatan-card {
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            text-align: center;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .angkatan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 169, 255, 0.1);
+        }
+
+        .angkatan-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bs-white);
+            margin-bottom: 20px;
+        }
+
+        .angkatan-nama {
+            margin-bottom: 5px;
+        }
+
+        .angkatan-posisi {
+            color: var(--text-muted-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: var(--text-muted-color);
+            margin: 0 8px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section {
+            background-color: var(--secondary-color);
+            padding: 30px 0;
+            color: var(--text-muted-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://www.instagram.com/xiierpeelone">RPL 1 | SMKN 64'4</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galeri.html">Galeri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#angkatan">Angkatan</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero-section">
+        <div class="hero-bg-fade"></div>
+        <div class="hero-overlay"></div>
+        <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
+            <h1 class="hero-title animate-on-load">Profil Angkatan</h1>
+            <p class="hero-subtitle animate-on-load">
+                Sebuah Perjalanan Tiga Tahun Penuh Karya dan Cerita di SMKN 64
+                Jakarta.
+            </p>
+            <a href="#angkatan" class="btn btn-brand mt-4 animate-on-load">Telusuri Kisah Kami</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="angkatan" class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title">Programmer - Coder</h2>
+                        <p class="section-subtitle">Para pejuang kode RPL 1.</p>
+                    </div>
+                </div>
+                <div class="row g-4 justify-content-center" id="angkatanGrid">
+
+
+                    <!-- BATAS -->
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 fade-in-up angkatan-item">
+                        <div class="angkatan-card">
+                            <img src="https://drive.google.com/thumbnail?id=1OhVY0arkUMS81r3mWS40OeTTHgqVDDrd&sz=w1000"
+                                alt="Nama Anggota" class="angkatan-img" />
+                            <div class="angkatan-info">
+                                <h5 class="angkatan-nama">Nama Anggota</h5>
+                                <p class="angkatan-posisi">Absen #</p>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/USERNAME_INSTAGRAM"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!-- 
+BATAS -->
+
+
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <button id="showAllAngkatan" class="btn btn-brand">
+                            Tampilkan Semua
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="container text-center">
+            <p>© 2025 RPL 1 SMKN 64 Jakarta.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const navbar = document.querySelector(".navbar");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            });
+
+            const scrollObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                }
+            );
+
+            document.querySelectorAll(".fade-in-up").forEach((element) => {
+                scrollObserver.observe(element);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    if (document.querySelector(this.getAttribute("href"))) {
+                        document.querySelector(this.getAttribute("href")).scrollIntoView({
+                            behavior: "smooth",
+                        });
+                    }
+                });
+            });
+
+            const heroBackgrounds = [
+                "foto/IMG_0387.webp",
+                "foto/IMG_0138.webp",
+                "foto/DSC_0587.webp",
+                "foto/IMG_2251.webp",
+            ];
+            let currentIndex = 0;
+            const heroFadeEl = document.querySelector(".hero-bg-fade");
+
+            heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % heroBackgrounds.length;
+                heroFadeEl.style.opacity = 0;
+                setTimeout(() => {
+                    heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
+                    heroFadeEl.style.opacity = 1;
+                }, 1000);
+            }, 4000);
+
+            const imageModal = document.getElementById("imageModal");
+            if (imageModal) {
+                const modalImage = document.getElementById("modalImage");
+                const modalTitle = document.getElementById("imageModalLabel");
+                const modalDesc = document.getElementById("modalDesc");
+
+                document
+                    .querySelectorAll('[data-bs-target="#imageModal"]')
+                    .forEach((el) => {
+                        el.addEventListener("click", function () {
+                            const imgSrc = this.getAttribute("data-img");
+                            const title = this.getAttribute("data-title");
+                            const desc = this.getAttribute("data-desc");
+
+                            modalImage.src = imgSrc;
+                            modalTitle.textContent = title;
+                            modalDesc.textContent = desc;
+                        });
+                    });
+            }
+
+            const angkatanItems = document.querySelectorAll(".angkatan-item");
+            const showAllButton = document.getElementById("showAllAngkatan");
+            const limit = 4;
+            let isExpanded = false;
+
+            const updateVisibility = () => {
+                angkatanItems.forEach((item, index) => {
+                    if (index >= limit) {
+                        if (isExpanded) {
+                            item.classList.remove("d-none");
+                        } else {
+                            item.classList.add("d-none");
+                        }
+                    }
+                });
+
+                showAllButton.textContent = isExpanded
+                    ? "Tampilkan Lebih Sedikit"
+                    : "Tampilkan Semua";
+
+                if (angkatanItems.length <= limit) {
+                    showAllButton.classList.add("d-none");
+                }
+            };
+
+            if (showAllButton) {
+                showAllButton.addEventListener("click", () => {
+                    isExpanded = !isExpanded;
+                    updateVisibility();
+                });
+            }
+
+            updateVisibility();
+        }); 
+    </script>
+</body>
+
+</html>
