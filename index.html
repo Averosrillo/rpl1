@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPL 1 SMKN 64</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-
     <style>
         :root {
             --bg-color: #121212;
@@ -19,7 +17,6 @@
             --section-padding: 80px 0;
             --border-radius: 12px;
         }
-
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -28,17 +25,14 @@
             line-height: 1.7;
             transition: background-color 0.3s ease;
         }
-
         a {
             color: var(--primary-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-
         a:hover {
             color: #ffffff;
         }
-
         h1,
         h2,
         h3,
@@ -48,15 +42,12 @@
             font-weight: 700;
             color: #ffffff;
         }
-
         .section-padding {
             padding: var(--section-padding);
         }
-
         .section-bg {
             background-color: var(--secondary-color);
         }
-
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 15px;
@@ -64,7 +55,6 @@
             display: inline-block;
             padding-bottom: 10px;
         }
-
         .section-title::after {
             content: "";
             position: absolute;
@@ -75,14 +65,12 @@
             height: 3px;
             background-color: var(--primary-color);
         }
-
         .section-subtitle {
             font-size: 1.1rem;
             color: var(--text-muted-color);
             max-width: 600px;
             margin: 0 auto 50px auto;
         }
-
         .navbar {
             background-color: rgba(30, 30, 30, 0.7);
             backdrop-filter: blur(10px);
@@ -90,25 +78,21 @@
             transition: background-color 0.3s ease, padding 0.3s ease;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .navbar.scrolled {
             background-color: var(--secondary-color);
             padding: 8px 0;
         }
-
         .navbar .navbar-brand {
             font-weight: 400;
             font-size: 1.5rem;
             letter-spacing: 1px;
         }
-
         .navbar-nav .nav-link {
             font-weight: 500;
             margin: 0 10px;
             position: relative;
             transition: color 0.3s ease;
         }
-
         .navbar-nav .nav-link::after {
             content: "";
             position: absolute;
@@ -119,12 +103,10 @@
             background-color: var(--primary-color);
             transition: width 0.3s ease-in-out;
         }
-
         .navbar-nav .nav-link:hover::after,
         .navbar-nav .nav-link.active::after {
             width: 100%;
         }
-
         .hero-section {
             position: relative;
             height: 100vh;
@@ -133,7 +115,6 @@
             color: white;
             overflow: hidden;
         }
-
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -142,19 +123,16 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6);
         }
-
         .hero-title {
             font-size: 4rem;
             font-weight: 700;
             letter-spacing: 2px;
         }
-
         .hero-subtitle {
             font-size: 1.2rem;
             max-width: 700px;
             margin-top: 20px;
         }
-
         .hero-bg-fade {
             position: absolute;
             top: 0;
@@ -168,16 +146,13 @@
             opacity: 1;
             transition: opacity 1s ease-in-out;
         }
-
         .hero-overlay {
             z-index: 1;
         }
-
         .hero-section .container {
             position: relative;
             z-index: 2;
         }
-
         .btn-brand {
             background-color: var(--primary-color);
             color: white;
@@ -187,56 +162,46 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-
         .btn-brand:hover {
             background-color: transparent;
             color: var(--primary-color);
             transform: translateY(-3px);
         }
-
         .animate-on-load {
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInSlideUp 1s forwards;
         }
-
         .hero-title.animate-on-load {
             animation-delay: 0.5s;
         }
-
         .hero-subtitle.animate-on-load {
             animation-delay: 0.8s;
         }
-
         .btn-brand.animate-on-load {
             animation-delay: 1.1s;
         }
-
         @keyframes fadeInSlideUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
         .fade-in-up {
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
         .fade-in-up.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         .timeline {
             position: relative;
             margin: 50px auto;
             padding: 40px 0;
             width: 100%;
         }
-
         .timeline::before {
             content: "";
             position: absolute;
@@ -247,25 +212,21 @@
             background: var(--secondary-color);
             transform: translateX(-50%);
         }
-
         .timeline-item {
             position: relative;
             margin-bottom: 50px;
             width: 50%;
         }
-
         .timeline-item:nth-child(odd) {
             padding-right: 50px;
             text-align: right;
             left: 0;
         }
-
         .timeline-item:nth-child(even) {
             padding-left: 50px;
             text-align: left;
             left: 50%;
         }
-
         .timeline-dot {
             content: "";
             position: absolute;
@@ -276,39 +237,32 @@
             border-radius: 50%;
             border: 3px solid var(--bg-color);
         }
-
         .timeline-item:nth-child(odd) .timeline-dot {
             right: -8px;
             transform: translate(50%, -50%);
         }
-
         .timeline-item:nth-child(even) .timeline-dot {
             left: -8px;
             transform: translate(-50%, -50%);
         }
-
         .timeline-content {
             background-color: var(--secondary-color);
             padding: 30px;
             border-radius: var(--border-radius);
             transition: transform 0.3s ease;
         }
-
         .timeline-content:hover {
             transform: translateY(-5px);
         }
-
         .timeline-date {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--primary-color);
             margin-bottom: 10px;
         }
-
         .timeline-content h3 {
             margin-top: 0;
         }
-
         .btn-filter {
             border: 1px solid var(--text-muted-color);
             background-color: transparent;
@@ -318,59 +272,105 @@
             padding: 8px 20px;
             transition: all 0.3s ease;
         }
-
         .btn-filter:hover,
         .btn-filter.active {
             background-color: var(--primary-color);
             color: white;
             border-color: var(--primary-color);
         }
-
         .footer-section {
             background-color: var(--secondary-color);
             padding: 30px 0;
             color: var(--text-muted-color);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
             }
-
             .hero-subtitle {
                 font-size: 1rem;
             }
-
             .section-title {
                 font-size: 2rem;
             }
-
+            .section-padding {
+                padding: 60px 0;
+            }
+            .timeline {
+                margin: 30px auto;
+                padding: 20px 0;
+            }
             .timeline::before {
-                left: 8px;
+                left: 15px;
                 transform: none;
             }
-
             .timeline-item {
                 width: 100%;
-                padding-left: 50px;
-                padding-right: 0;
+                padding-left: 40px;
+                padding-right: 15px;
                 text-align: left !important;
                 left: 0 !important;
+                margin-bottom: 30px;
             }
-
             .timeline-dot {
-                left: 8px;
+                left: 15px;
                 transform: translate(-50%, -50%);
+                height: 12px;
+                width: 12px;
+                top: 15px;
             }
-
             .timeline-item:nth-child(even) {
-                padding-left: 50px;
+                padding-left: 40px;
+                padding-right: 15px;
+            }
+            .timeline-item:nth-child(odd) {
+                padding-left: 40px;
+                padding-right: 15px;
+            }
+            .timeline-content {
+                padding: 20px;
+                margin-left: 0;
+            }
+            .timeline-content h3 {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+            .timeline-date {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
+            }
+            .timeline-content p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .timeline-item {
+                padding-left: 35px;
+                padding-right: 10px;
+            }
+            .timeline::before {
+                left: 12px;
+            }
+            .timeline-dot {
+                left: 12px;
+                height: 10px;
+                width: 10px;
+            }
+            .timeline-content {
+                padding: 15px;
+            }
+            .timeline-content h3 {
+                font-size: 1.2rem;
+            }
+            .timeline-content p {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -394,7 +394,6 @@
             </div>
         </div>
     </nav>
-
     <header id="hero" class="hero-section">
         <div class="hero-bg-fade"></div>
         <div class="hero-overlay"></div>
@@ -407,7 +406,6 @@
             <a href="#sejarah" class="btn btn-brand mt-4 animate-on-load">Telusuri Kisah Kami</a>
         </div>
     </header>
-
     <main>
         <section id="sejarah" class="section-padding">
             <div class="container">
@@ -432,11 +430,10 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <h3>Kelas 11: Pendalaman Materi</h3>
+                            <h3>Kelas 11: Mulai Serius Belajar</h3>
                             <div class="timeline-date">2023 - 2024</div>
                             <p>
                                 Mulai masuk ke materi yang lebih kompleks seperti PHP,
@@ -445,7 +442,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
@@ -462,13 +458,11 @@
             </div>
         </section>
     </main>
-
     <footer class="footer-section">
         <div class="container text-center">
             <p>© 2025 RPL 1 SMKN 64 Jakarta.</p>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -480,7 +474,6 @@
                     navbar.classList.remove("scrolled");
                 }
             });
-
             const scrollObserver = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
@@ -493,11 +486,9 @@
                     threshold: 0.1,
                 }
             );
-
             document.querySelectorAll(".fade-in-up").forEach((element) => {
                 scrollObserver.observe(element);
             });
-
             document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
                 anchor.addEventListener("click", function (e) {
                     e.preventDefault();
@@ -508,7 +499,6 @@
                     }
                 });
             });
-
             const heroBackgrounds = [
                 "foto/IMG_0387.webp",
                 "foto/IMG_0138.webp",
@@ -517,9 +507,7 @@
             ];
             let currentIndex = 0;
             const heroFadeEl = document.querySelector(".hero-bg-fade");
-
             heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
-
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % heroBackgrounds.length;
                 heroFadeEl.style.opacity = 0;
@@ -528,13 +516,11 @@
                     heroFadeEl.style.opacity = 1;
                 }, 1000);
             }, 4000);
-
             const imageModal = document.getElementById("imageModal");
             if (imageModal) {
                 const modalImage = document.getElementById("modalImage");
                 const modalTitle = document.getElementById("imageModalLabel");
                 const modalDesc = document.getElementById("modalDesc");
-
                 document
                     .querySelectorAll('[data-bs-target="#imageModal"]')
                     .forEach((el) => {
@@ -542,16 +528,13 @@
                             const imgSrc = this.getAttribute("data-img");
                             const title = this.getAttribute("data-title");
                             const desc = this.getAttribute("data-desc");
-
                             modalImage.src = imgSrc;
                             modalTitle.textContent = title;
                             modalDesc.textContent = desc;
                         });
                     });
             }
-
         }); 
     </script>
 </body>
-
 </html>
