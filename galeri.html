@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPL 1 SMKN 64</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-
     <style>
         :root {
             --bg-color: #121212;
@@ -16,8 +14,15 @@
             --text-color: #e0e0e0;
             --text-muted-color: #888;
             --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --section-padding: 80px 0;
-            --border-radius: 12px;
+            --section-padding: 100px 0;
+            --border-radius: 16px;
+            --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -25,28 +30,24 @@
             color: var(--text-color);
             font-family: var(--font-family);
             overflow-x: hidden;
-            line-height: 1.7;
-            transition: background-color 0.3s ease;
+            line-height: 1.8;
+            scroll-behavior: smooth;
         }
 
         a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s var(--transition-ease);
         }
 
         a:hover {
             color: #ffffff;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             color: #ffffff;
+            margin-bottom: 1rem;
         }
 
         .section-padding {
@@ -58,11 +59,10 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 3rem;
             position: relative;
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
 
         .section-title::after {
@@ -71,53 +71,55 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+            width: 80px;
+            height: 4px;
             background-color: var(--primary-color);
+            transition: width 0.3s var(--transition-ease);
         }
 
         .section-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-muted-color);
-            max-width: 600px;
-            margin: 0 auto 50px auto;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
         }
 
         .navbar {
-            background-color: rgba(30, 30, 30, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: background-color 0.3s ease, padding 0.3s ease;
+            background-color: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s var(--transition-ease);
+            padding: 15px 0;
         }
 
         .navbar.scrolled {
             background-color: var(--secondary-color);
-            padding: 8px 0;
+            padding: 10px 0;
         }
 
         .navbar .navbar-brand {
-            font-weight: 400;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
         }
 
         .navbar-nav .nav-link {
             font-weight: 500;
-            margin: 0 10px;
+            margin: 0 15px;
             position: relative;
-            transition: color 0.3s ease;
+            padding: 10px 0;
+            transition: all 0.3s var(--transition-ease);
         }
 
         .navbar-nav .nav-link::after {
             content: "";
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background-color: var(--primary-color);
-            transition: width 0.3s ease-in-out;
+            transition: width 0.3s var(--transition-ease);
         }
 
         .navbar-nav .nav-link:hover::after,
@@ -129,9 +131,9 @@
             position: relative;
             height: 100vh;
             width: 100%;
-            background: url("foto/IMG_0387.webp") no-repeat center center/cover;
-            color: white;
             overflow: hidden;
+            display: flex;
+            align-items: center;
         }
 
         .hero-overlay {
@@ -140,19 +142,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.65);
+            z-index: 1;
         }
 
         .hero-bg-fade {
@@ -163,14 +154,9 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             z-index: 0;
             opacity: 1;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .hero-overlay {
-            z-index: 1;
+            transition: opacity 1.5s var(--transition-ease);
         }
 
         .hero-section .container {
@@ -178,39 +164,48 @@
             z-index: 2;
         }
 
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 25px auto;
+            opacity: 0.9;
+        }
+
         .btn-brand {
             background-color: var(--primary-color);
             color: white;
             border: 2px solid var(--primary-color);
-            padding: 12px 30px;
+            padding: 15px 40px;
             border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--transition-ease);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-brand:hover {
             background-color: transparent;
             color: var(--primary-color);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .animate-on-load {
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInSlideUp 1s forwards;
+            transform: translateY(50px);
+            animation: fadeInSlideUp 1.2s var(--transition-ease) forwards;
         }
 
-        .hero-title.animate-on-load {
-            animation-delay: 0.5s;
-        }
-
-        .hero-subtitle.animate-on-load {
-            animation-delay: 0.8s;
-        }
-
-        .btn-brand.animate-on-load {
-            animation-delay: 1.1s;
-        }
+        .hero-title.animate-on-load { animation-delay: 0.3s; }
+        .hero-subtitle.animate-on-load { animation-delay: 0.6s; }
+        .btn-brand.animate-on-load { animation-delay: 0.9s; }
 
         @keyframes fadeInSlideUp {
             to {
@@ -219,104 +214,26 @@
             }
         }
 
-        .fade-in-up {
+        .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(60px);
+            transition: all 0.8s var(--transition-ease);
         }
 
-        .fade-in-up.is-visible {
+        .fade-in.is-visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .timeline {
-            position: relative;
-            margin: 50px auto;
-            padding: 40px 0;
-            width: 100%;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--secondary-color);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 50px;
-            width: 50%;
-        }
-
-        .timeline-item:nth-child(odd) {
-            padding-right: 50px;
-            text-align: right;
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            padding-left: 50px;
-            text-align: left;
-            left: 50%;
-        }
-
-        .timeline-dot {
-            content: "";
-            position: absolute;
-            top: 20px;
-            height: 16px;
-            width: 16px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            border: 3px solid var(--bg-color);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -8px;
-            transform: translate(50%, -50%);
-        }
-
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -8px;
-            transform: translate(-50%, -50%);
-        }
-
-        .timeline-content {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            transition: transform 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-        }
-
-        .timeline-date {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .timeline-content h3 {
-            margin-top: 0;
         }
 
         .btn-filter {
             border: 1px solid var(--text-muted-color);
             background-color: transparent;
             color: var(--text-muted-color);
-            margin: 5px;
+            margin: 8px;
             border-radius: 50px;
-            padding: 8px 20px;
-            transition: all 0.3s ease;
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s var(--transition-ease);
         }
 
         .btn-filter:hover,
@@ -324,24 +241,30 @@
             background-color: var(--primary-color);
             color: white;
             border-color: var(--primary-color);
+            transform: scale(1.05);
         }
 
         .gallery-card {
             position: relative;
             overflow: hidden;
             border-radius: var(--border-radius);
-            cursor: pointer;
+            transition: transform 0.5s var(--transition-ease);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .gallery-card img {
             width: 100%;
-            height: 100%;
+            height: 300px;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s var(--transition-ease);
         }
 
+        /* .gallery-card:hover {
+            transform: translateY(-10px);
+        } */
+
         .gallery-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .gallery-overlay {
@@ -350,25 +273,122 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 20px;
+            padding: 25px;
             color: white;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s var(--transition-ease);
         }
 
-        .gallery-card:hover .gallery-overlay {
+        /* .gallery-card:hover .gallery-overlay {
             opacity: 1;
+        } */
+
+        .zoom-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            z-index: 2;
+            transition: transform 0.3s var(--transition-ease);
         }
+
+        /* .zoom-icon:hover {
+            transform: scale(1.3);
+        } */
 
         .footer-section {
             background-color: var(--secondary-color);
-            padding: 30px 0;
+            padding: 80px 0 40px;
             color: var(--text-muted-color);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li a {
+            color: var(--text-muted-color);
+            padding: 8px 0;
+            display: inline-block;
+            transition: all 0.3s var(--transition-ease);
+        }
+
+        .footer-links li a:hover {
+            color: var(--primary-color);
+            transform: translateX(8px);
+        }
+
+        .footer-social-links a {
+            color: var(--text-muted-color);
+            font-size: 1.5rem;
+            margin-right: 25px;
+            transition: all 0.3s var(--transition-ease);
+        }
+
+        .footer-social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 40px;
+            margin-top: 50px;
+        }
+
+        .modal-content {
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: var(--border-radius);
+        }
+
+        .modal-header {
+            border-bottom: none;
+            padding: 20px 30px;
+        }
+
+        .modal-body img {
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar-nav .nav-link {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .gallery-card img {
+                height: 250px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -378,104 +398,17 @@
 
             .hero-subtitle {
                 font-size: 1rem;
+                max-width: 90%;
             }
 
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        .zoom-icon {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 2;
-            transition: transform 0.3s ease;
-        }
-
-        .zoom-icon:hover {
-            transform: scale(1);
-        }
-        .footer-section {
-            background: var(--secondary-color);
-            padding: 80px 0 40px 0;
-            color: var(--text-muted-color);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-family: var(--font-family);
-        }
-
-        .footer-title {
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li a {
-            color: var(--text-muted-color);
-            text-decoration: none;
-            padding: 5px 0;
-            display: inline-block;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .footer-links li a:hover {
-            color: var(--primary-color);
-            transform: translateX(5px);
-        }
-
-        .footer-social-links a {
-            color: var(--text-muted-color);
-            font-size: 1.2rem;
-            margin-right: 20px;
-            display: inline-block;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .footer-social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 30px;
-            margin-top: 40px;
-        }
-
-        [data-animation] {
-            opacity: 0;
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-            [data-animation="fade-up"] {
-                transform: translateY(40px);
+            .section-padding {
+                padding: 60px 0;
             }
 
-            .is-visible {
-                opacity: 1;
-                transform: none !important;
+            .gallery-card img {
+                height: 200px;
             }
-        }
 
-        @media (prefers-reduced-motion: reduce) {
-            [data-animation] {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-
-        @media (max-width: 768px) {
             .footer-section {
                 text-align: center;
             }
@@ -485,12 +418,30 @@
             }
 
             .footer-social-links a {
-                margin: 0 10px;
+                margin: 0 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn-brand {
+                padding: 12px 30px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-card img {
+                height: 180px;
             }
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -505,7 +456,7 @@
                         <a class="nav-link" href="index.html">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#galeri">Galeri</a>
+                        <a class="nav-link active" href="#galeri">Galeri</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="angkatan.html">Angkatan</a>
@@ -518,13 +469,14 @@
     <header id="hero" class="hero-section">
         <div class="hero-bg-fade"></div>
         <div class="hero-overlay"></div>
-        <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
+        <div class="container text-center">
             <h1 class="hero-title animate-on-load">GALERI RPL 1</h1>
             <p class="hero-subtitle animate-on-load">
-                Sebuah Perjalanan Tiga Tahun Penuh Karya dan Cerita di SMKN 64
-                Jakarta.
+                Sebuah Perjalanan Tiga Tahun Penuh Karya dan Cerita di SMKN 64 Jakarta.
             </p>
-            <a href="#galeri" class="btn btn-brand mt-4 animate-on-load">Lihat Galeri</a>
+            <a href="#galeri" class="btn btn-brand mt-4 animate-on-load">
+                <i class="bi bi-image"></i> Lihat Galeri
+            </a>
         </div>
     </header>
 
@@ -532,16 +484,14 @@
         <section id="galeri" class="section-padding section-bg">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center">
+                    <div class="col-12 text-center fade-in">
                         <h2 class="section-title">Galeri Kenangan</h2>
-                        <p class="section-subtitle">Rekam jejak visual perjalanan.</p>
+                        <p class="section-subtitle">Rekam jejak visual perjalanan RPL 1.</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 text-center mb-4">
-                        <button class="btn btn-filter active" data-filter="all">
-                            <i class="bi bi-grid-fill me-1"></i>
-                        </button>
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center mb-5 fade-in">
+                        <button class="btn btn-filter active" data-filter="all">Semua</button>
                         <button class="btn btn-filter" data-filter="kelas10">10</button>
                         <button class="btn btn-filter" data-filter="kelas11">11</button>
                         <button class="btn btn-filter" data-filter="kelas12">12</button>
@@ -580,6 +530,132 @@
                             <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
                                 data-img="https://drive.google.com/thumbnail?id=1HkzH46B9_IOm005OKL9mXYGl8gueNnSP&sz=w1000"
                                 data-title="Bang Jago" data-desc="Kelas 10">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas10">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1YC_Dn5i75YQTsNQ7mZf7lzSt6DJxhBX-&sz=w1000"
+                                class="img-fluid" alt="Galeri 2" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1YC_Dn5i75YQTsNQ7mZf7lzSt6DJxhBX-&sz=w1000"
+                                data-title="Bang Jago" data-desc="Kelas 10" />
+                            <div class="gallery-overlay">
+                                <h5>Kemah Pramuka</h5>
+                                <p>Kelas 10</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1YC_Dn5i75YQTsNQ7mZf7lzSt6DJxhBX-&sz=w1000"
+                                data-title="Kemah Pramuka" data-desc="Kelas 10">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas10">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1x_IT6j9vTmF60uydMYAAaKbXsElPZfA_&sz=w1000"
+                                class="img-fluid" alt="Galeri 2" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1x_IT6j9vTmF60uydMYAAaKbXsElPZfA_&sz=w1000"
+                                data-title="Bang Jago" data-desc="Kelas 10" />
+                            <div class="gallery-overlay">
+                                <h5>Potbar ama AA Dani</h5>
+                                <p>Kelas 10</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1x_IT6j9vTmF60uydMYAAaKbXsElPZfA_&sz=w1000"
+                                data-title="Potbar ama AA Dani" data-desc="Kelas 10">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas10">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1R9LUWr0yX2PogyU65Si4LtYVM41INu22&sz=w1000"
+                                class="img-fluid" alt="Galeri 2" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1R9LUWr0yX2PogyU65Si4LtYVM41INu22&sz=w1000"
+                                data-title="Bang Jago" data-desc="Kelas 10" />
+                            <div class="gallery-overlay">
+                                <h5>Bersama Bu Alfi</h5>
+                                <p>Kelas 10</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1R9LUWr0yX2PogyU65Si4LtYVM41INu22&sz=w1000"
+                                data-title="Bersama Bu Alfi" data-desc="Kelas 10">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas10">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1O4id6GAKmXuSkQVptU2jQeBxncTvQCel&sz=w1000"
+                                class="img-fluid" alt="Galeri 2" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1O4id6GAKmXuSkQVptU2jQeBxncTvQCel&sz=w1000"
+                                data-title="Bang Jago" data-desc="Kelas 10" />
+                            <div class="gallery-overlay">
+                                <h5>Pasukan Bila</h5>
+                                <p>Kelas 10</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1O4id6GAKmXuSkQVptU2jQeBxncTvQCel&sz=w1000"
+                                data-title="Pasukan Bila" data-desc="Kelas 10">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas10">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1s-dOvuj25vtWU1eKIdkvFIMd6sClb3DZ&sz=w1000"
+                                class="img-fluid" alt="Galeri 2" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1s-dOvuj25vtWU1eKIdkvFIMd6sClb3DZ&sz=w1000"
+                                data-title="Bang Jago" data-desc="Kelas 10" />
+                            <div class="gallery-overlay">
+                                <h5>MPLS</h5>
+                                <p>Kelas 10</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1s-dOvuj25vtWU1eKIdkvFIMd6sClb3DZ&sz=w1000"
+                                data-title="MPLS" data-desc="Kelas 10">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas10">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1paVUsL3MmvtiHXq5_HX8hrstc3s2OMns&sz=w1000"
+                                class="img-fluid" alt="Galeri 2" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1paVUsL3MmvtiHXq5_HX8hrstc3s2OMns&sz=w1000"
+                                data-title="Bang Jago" data-desc="Kelas 10" />
+                            <div class="gallery-overlay">
+                                <h5>Pameran Ekstrakulikuler</h5>
+                                <p>Kelas 10</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1paVUsL3MmvtiHXq5_HX8hrstc3s2OMns&sz=w1000"
+                                data-title="Pameran Ekstrakulikuler" data-desc="Kelas 10">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas10">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1o1LX9tKxU8RwXVgBaAfROVnM8SFiVaBx&sz=w1000"
+                                class="img-fluid" alt="Galeri 2" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id1o1LX9tKxU8RwXVgBaAfROVnM8SFiVaBx&sz=w1000"
+                                data-title="Bang Jago" data-desc="Kelas 10" />
+                            <div class="gallery-overlay">
+                                <h5>Pasukan Bila 2</h5>
+                                <p>Kelas 10</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1o1LX9tKxU8RwXVgBaAfROVnM8SFiVaBx&sz=w1000"
+                                data-title="Pasukan Bila 2" data-desc="Kelas 10">
                                 <i class="bi bi-zoom-in"></i>
                             </div>
                         </div>
@@ -625,6 +701,126 @@
                         </div>
                     </div>
 
+                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1Mov9jag_EUXTMZieRzvxl3Pi4cc-zSsq&sz=w1000"
+                                class="img-fluid" alt="Judul Gambar"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1Mov9jag_EUXTMZieRzvxl3Pi4cc-zSsq&sz=w1000"
+                                data-title="Judul Gambar"
+                                data-desc="Kelas 11" />
+                            <div class="gallery-overlay">
+                                <h5>Cewe RPL 1</h5>
+                                <p>Kelas 12</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1Mov9jag_EUXTMZieRzvxl3Pi4cc-zSsq&sz=w1000"
+                                data-title="Traktir Gacoan Reyhan HBD" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1hC68w7GhGTqlR2UDfZIpXlLDW0mXlOxy&sz=w1000"
+                                class="img-fluid" alt="Judul Gambar"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1hC68w7GhGTqlR2UDfZIpXlLDW0mXlOxy&sz=w1000"
+                                data-title="Judul Gambar"
+                                data-desc="Kelas 11" />
+                            <div class="gallery-overlay">
+                                <h5>Bukber Rumah Hanif</h5>
+                                <p>Kelas 12</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1hC68w7GhGTqlR2UDfZIpXlLDW0mXlOxy&sz=w1000"
+                                data-title="Bukber Rumah Hanif" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1eP9W_V66QFmz7l6RFSY-d3hqDp7zvDmy&sz=w1000"
+                                class="img-fluid" alt="Judul Gambar"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1eP9W_V66QFmz7l6RFSY-d3hqDp7zvDmy&sz=w1000"
+                                data-title="Judul Gambar"
+                                data-desc="Kelas 11" />
+                            <div class="gallery-overlay">
+                                <h5>Drama Film PPKN</h5>
+                                <p>Kelas 11</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1eP9W_V66QFmz7l6RFSY-d3hqDp7zvDmy&sz=w1000"
+                                data-title="Drama Film PPKN" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1Fn-iTfXSGlRXKyHdVjWj_PhHIucvkRbJ&sz=w1000"
+                                class="img-fluid" alt="Judul Gambar"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1Fn-iTfXSGlRXKyHdVjWj_PhHIucvkRbJ&sz=w1000"
+                                data-title="Judul Gambar"
+                                data-desc="Kelas 11" />
+                            <div class="gallery-overlay">
+                                <h5>Cewe Villa</h5>
+                                <p>Kelas 11</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1Fn-iTfXSGlRXKyHdVjWj_PhHIucvkRbJ&sz=w1000"
+                                data-title="Cewe Villa" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1E9W4fJv9Yqb8rZnsHm76KBWKoOKPyEg7&sz=w1000"
+                                class="img-fluid" alt="Judul Gambar"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1E9W4fJv9Yqb8rZnsHm76KBWKoOKPyEg7&sz=w1000"
+                                data-title="Judul Gambar"
+                                data-desc="Kelas 11" />
+                            <div class="gallery-overlay">
+                                <h5>Cewe Villa 2</h5>
+                                <p>Kelas 11</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1E9W4fJv9Yqb8rZnsHm76KBWKoOKPyEg7&sz=w1000"
+                                data-title="Cewe Villa 2" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1E5KvIE9q_uQbShJ2FFNMA8mwoZraQkLl&sz=w1000"
+                                class="img-fluid" alt="Judul Gambar"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1E5KvIE9q_uQbShJ2FFNMA8mwoZraQkLl&sz=w1000"
+                                data-title="Judul Gambar"
+                                data-desc="Kelas 11" />
+                            <div class="gallery-overlay">
+                                <h5>Senam Bersama</h5>
+                                <p>Kelas 11</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1E5KvIE9q_uQbShJ2FFNMA8mwoZraQkLl&sz=w1000"
+                                data-title="Senam Bersama" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
                         <div class="gallery-card position-relative">
                             <img src="https://drive.google.com/thumbnail?id=1RhMRbuxjSos4HTQtkeweZBebJcf5g8eC&sz=w1000"
@@ -644,7 +840,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas11">
                         <div class="gallery-card position-relative">
@@ -828,10 +1023,90 @@
 
                     <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
                         <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1j4Riyrp56LYkOsytKHs2ZxydPXfpJUky&sz=w1000"
+                                class="img-fluid" alt="Galeri 2"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1j4Riyrp56LYkOsytKHs2ZxydPXfpJUky&sz=w1000"
+                                data-title="Pelepasan RPL 1"
+                                data-desc="Kelas 12" />
+                            <div class="gallery-overlay">
+                                <h5>Kang Bakar</h5>
+                                <p>Kelas 12</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1j4Riyrp56LYkOsytKHs2ZxydPXfpJUky&sz=w1000"
+                                data-title="Kang Bakar" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1A6V3qounc78LTqpuUNSJLl8ZB0YTdOI2&sz=w1000"
+                                class="img-fluid" alt="Galeri 2"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1A6V3qounc78LTqpuUNSJLl8ZB0YTdOI2&sz=w1000"
+                                data-title="Pelepasan RPL 1"
+                                data-desc="Kelas 12" />
+                            <div class="gallery-overlay">
+                                <h5>Classmeet</h5>
+                                <p>Kelas 12</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1A6V3qounc78LTqpuUNSJLl8ZB0YTdOI2&sz=w1000"
+                                data-title="Classmeet" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1hVrVqoxCdCTiMZI6dJfX3X2x-lt_KZ9q&sz=w1000"
+                                class="img-fluid" alt="Galeri 2"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1hVrVqoxCdCTiMZI6dJfX3X2x-lt_KZ9q&sz=w1000"
+                                data-title="Pelepasan RPL 1"
+                                data-desc="Kelas 12" />
+                            <div class="gallery-overlay">
+                                <h5>Bu jeni & Gang</h5>
+                                <p>Kelas 12</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1hVrVqoxCdCTiMZI6dJfX3X2x-lt_KZ9q&sz=w1000"
+                                data-title="Bu jeni & Gang" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=134JXwF20KnFlNOzQCK_pBg7ogEORsefC&sz=w1000"
+                                class="img-fluid" alt="Galeri 2"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=134JXwF20KnFlNOzQCK_pBg7ogEORsefC&sz=w1000"
+                                data-title="Pelepasan RPL 1"
+                                data-desc="Kelas 12" />
+                            <div class="gallery-overlay">
+                                <h5>Jenguk Rafi</h5>
+                                <p>Kelas 12</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=134JXwF20KnFlNOzQCK_pBg7ogEORsefC&sz=w1000"
+                                data-title="Jenguk Rafi" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
+                        <div class="gallery-card position-relative">
                             <img src="https://drive.google.com/thumbnail?id=1vtN2zN12xz08Y_xfwd3O8JAuB9IcmnY9&sz=w1000"
                                 class="img-fluid" alt="Galeri 2"
                                 data-bs-toggle="modal" data-bs-target="#imageModal"
-                                data-img="hhttps://drive.google.com/thumbnail?id=1vtN2zN12xz08Y_xfwd3O8JAuB9IcmnY9&sz=w1000"
+                                data-img="https://drive.google.com/thumbnail?id=1vtN2zN12xz08Y_xfwd3O8JAuB9IcmnY9&sz=w1000"
                                 data-title="Pelepasan RPL 1"
                                 data-desc="Kelas 12" />
                             <div class="gallery-overlay">
@@ -841,6 +1116,46 @@
                             <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
                                 data-img="https://drive.google.com/thumbnail?id=1vtN2zN12xz08Y_xfwd3O8JAuB9IcmnY9&sz=w1000"
                                 data-title="Supporter RPL 1" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1wxZwOC9k_trNgSi6SdhH3HrLocqv5pjs&sz=w1000"
+                                class="img-fluid" alt="Galeri 2"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1wxZwOC9k_trNgSi6SdhH3HrLocqv5pjs&sz=w1000"
+                                data-title="Pelepasan RPL 1"
+                                data-desc="Kelas 12" />
+                            <div class="gallery-overlay">
+                                <h5>Supporter RPL 1</h5>
+                                <p>Kelas 12</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1wxZwOC9k_trNgSi6SdhH3HrLocqv5pjs&sz=w1000"
+                                data-title="Supporter RPL 1" data-desc="Kelas 12">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 gallery-item fade-in-up" data-category="kelas12">
+                        <div class="gallery-card position-relative">
+                            <img src="https://drive.google.com/thumbnail?id=1QsW_84Q0mr4OrZqVi4s0bP-fl3ocrpjA&sz=w1000"
+                                class="img-fluid" alt="Galeri 2"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1QsW_84Q0mr4OrZqVi4s0bP-fl3ocrpjA&sz=w1000"
+                                data-title="Pelepasan RPL 1"
+                                data-desc="Kelas 12" />
+                            <div class="gallery-overlay">
+                                <h5>Ramadhan Tausiah</h5>
+                                <p>Kelas 12</p>
+                            </div>
+                            <div class="zoom-icon" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                data-img="https://drive.google.com/thumbnail?id=1QsW_84Q0mr4OrZqVi4s0bP-fl3ocrpjA&sz=w1000"
+                                data-title="Ramadhan Tausiah" data-desc="Kelas 12">
                                 <i class="bi bi-zoom-in"></i>
                             </div>
                         </div>
@@ -1054,47 +1369,36 @@
     <footer class="footer-section">
         <div class="container">
             <div class="row gy-5">
-                <div class="col-lg-4 col-md-12" data-animation="fade-up">
+                <div class="col-lg-4 col-md-12 fade-in">
                     <h5 class="footer-title">RPL 1 SMKN 64 '4</h5>
                     <p class="text-muted-color">
                         Membangun masa depan melalui baris kode dan kebersamaan. Satu angkatan, satu keluarga.
                     </p>
                 </div>
-
-                <div class="col-lg-2 col-md-4" data-animation="fade-up" style="transition-delay: 0.1s;">
+                <div class="col-lg-2 col-md-4 fade-in" style="transition-delay: 0.1s;">
                     <h5 class="footer-title">Navigasi</h5>
                     <ul class="footer-links">
-                         <li><a data-hover href="index.html">Beranda</a></li>
-                        <li><a data-hover href="#hero">Galeri</a></li>
-                        <li><a data-hover href="angkatan.html">Angkatan</a></li>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="#galeri">Galeri</a></li>
+                        <li><a href="angkatan.html">Angkatan</a></li>
                     </ul>
                 </div>
-
-                <div class="col-lg-3 col-md-4" data-animation="fade-up" style="transition-delay: 0.2s;">
+                <div class="col-lg-3 col-md-4 fade-in" style="transition-delay: 0.2s;">
                     <h5 class="footer-title">Halaman Lain</h5>
                     <ul class="footer-links">
-                        <li><a data-hover href="galeri.html">Galeri Kenangan</a></li>
-                        <li><a data-hover href="angkatan.html">Buku Angkatan</a></li>
+                        <li><a href="galeri.html">Galeri Kenangan</a></li>
+                        <li><a href="angkatan.html">Buku Angkatan</a></li>
                     </ul>
                 </div>
-
-                <div class="col-lg-3 col-md-4" data-animation="fade-up" style="transition-delay: 0.3s;">
+                <div class="col-lg-3 col-md-4 fade-in" style="transition-delay: 0.3s;">
                     <h5 class="footer-title">Ikuti Kami</h5>
                     <div class="footer-social-links d-flex">
-                        <a data-hover href="https://www.instagram.com/xiierpeelone" aria-label="Instagram"
-                            target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/xiierpeelone" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <!-- <a data-hover href="#" aria-label="Github">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a data-hover href="#" aria-label="Twitter">
-                            <i class="bi bi-twitter-x"></i>
-                        </a> -->
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom text-center">
                 <p class="small text-muted-color mb-0">
                     © 2025 RPL 1 SMKN 64 Jakarta.
@@ -1106,13 +1410,12 @@
     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content bg-dark text-white">
-                <div class="modal-header border-0">
+                <div class="modal-header">
                     <h5 class="modal-title" id="imageModalLabel">Judul</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <img id="modalImage" src class="img-fluid rounded" alt="Preview" />
+                    <img id="modalImage" src="" class="img-fluid rounded" alt="Preview" />
                     <p class="mt-3" id="modalDesc"></p>
                 </div>
             </div>
@@ -1121,72 +1424,60 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", () => {
             const navbar = document.querySelector(".navbar");
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add("scrolled");
-                } else {
-                    navbar.classList.remove("scrolled");
-                }
-            });
+            const updateNavbar = () => {
+                navbar.classList.toggle("scrolled", window.scrollY > 50);
+            };
+            window.addEventListener("scroll", updateNavbar);
+            updateNavbar();
 
-            const scrollObserver = new IntersectionObserver(
+            const observer = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add("is-visible");
+                            observer.unobserve(entry.target);
                         }
                     });
                 },
-                {
-                    threshold: 0.1,
-                }
+                { rootMargin: "0px 0px -10% 0px" }
             );
-
-            document.querySelectorAll(".fade-in-up").forEach((element) => {
-                scrollObserver.observe(element);
-            });
+            document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
 
             const filterButtons = document.querySelectorAll(".btn-filter");
             const galleryItems = document.querySelectorAll(".gallery-item");
-
             filterButtons.forEach((button) => {
                 button.addEventListener("click", () => {
                     filterButtons.forEach((btn) => btn.classList.remove("active"));
                     button.classList.add("active");
-
                     const filter = button.getAttribute("data-filter");
-
                     galleryItems.forEach((item) => {
-                        item.style.transition = "transform 0.3s ease, opacity 0.3s ease";
-                        item.style.transform = "scale(0.9)";
+                        item.style.transition = "all 0.4s var(--transition-ease)";
+                        item.style.transform = "scale(0.8)";
                         item.style.opacity = "0";
-                        item.style.display = "none";
-
-                        if (
-                            filter === "all" ||
-                            item.getAttribute("data-category") === filter
-                        ) {
-                            setTimeout(() => {
-                                item.style.display = "block";
+                        setTimeout(() => {
+                            item.style.display =
+                                filter === "all" || item.getAttribute("data-category") === filter
+                                    ? "block"
+                                    : "none";
+                            if (item.style.display === "block") {
                                 setTimeout(() => {
                                     item.style.transform = "scale(1)";
                                     item.style.opacity = "1";
                                 }, 50);
-                            }, 300);
-                        }
+                            }
+                        }, 400);
                     });
                 });
             });
 
             document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-                anchor.addEventListener("click", function (e) {
+                anchor.addEventListener("click", (e) => {
                     e.preventDefault();
-                    if (document.querySelector(this.getAttribute("href"))) {
-                        document.querySelector(this.getAttribute("href")).scrollIntoView({
-                            behavior: "smooth",
-                        });
+                    const target = document.querySelector(anchor.getAttribute("href"));
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth", block: "start" });
                     }
                 });
             });
@@ -1199,65 +1490,30 @@
             ];
             let currentIndex = 0;
             const heroFadeEl = document.querySelector(".hero-bg-fade");
-
             heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
-
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % heroBackgrounds.length;
                 heroFadeEl.style.opacity = 0;
                 setTimeout(() => {
                     heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
                     heroFadeEl.style.opacity = 1;
-                }, 1000);
-            }, 4000);
+                }, 1500);
+            }, 5000);
 
             const imageModal = document.getElementById("imageModal");
             if (imageModal) {
                 const modalImage = document.getElementById("modalImage");
                 const modalTitle = document.getElementById("imageModalLabel");
                 const modalDesc = document.getElementById("modalDesc");
-
-                document
-                    .querySelectorAll('[data-bs-target="#imageModal"]')
-                    .forEach((el) => {
-                        el.addEventListener("click", function () {
-                            const imgSrc = this.getAttribute("data-img");
-                            const title = this.getAttribute("data-title");
-                            const desc = this.getAttribute("data-desc");
-
-                            modalImage.src = imgSrc;
-                            modalTitle.textContent = title;
-                            modalDesc.textContent = desc;
-                        });
+                document.querySelectorAll('[data-bs-target="#imageModal"]').forEach((el) => {
+                    el.addEventListener("click", () => {
+                        modalImage.src = el.getAttribute("data-img");
+                        modalTitle.textContent = el.getAttribute("data-title");
+                        modalDesc.textContent = el.getAttribute("data-desc");
                     });
-            }
-        }); 
-
-        document.addEventListener("DOMContentLoaded", function () {
-
-            function initScrollAnimations() {
-                const animatedElements = document.querySelectorAll('[data-animation]');
-
-                if (animatedElements.length === 0) return;
-
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    rootMargin: '0px 0px -10% 0px'
                 });
-
-                animatedElements.forEach(el => observer.observe(el));
             }
-
-            initScrollAnimations();
-
         });
     </script>
 </body>
-
 </html>
