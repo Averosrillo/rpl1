@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,8 +14,15 @@
             --text-color: #e0e0e0;
             --text-muted-color: #888;
             --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --section-padding: 80px 0;
-            --border-radius: 12px;
+            --section-padding: 100px 0;
+            --border-radius: 16px;
+            --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -24,28 +30,24 @@
             color: var(--text-color);
             font-family: var(--font-family);
             overflow-x: hidden;
-            line-height: 1.7;
-            transition: background-color 0.3s ease;
+            line-height: 1.8;
+            scroll-behavior: smooth;
         }
 
         a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s var(--transition-ease);
         }
 
         a:hover {
             color: #ffffff;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             color: #ffffff;
+            margin-bottom: 1rem;
         }
 
         .section-padding {
@@ -57,11 +59,10 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 3rem;
             position: relative;
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
 
         .section-title::after {
@@ -70,53 +71,55 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+            width: 80px;
+            height: 4px;
             background-color: var(--primary-color);
+            transition: width 0.3s var(--transition-ease);
         }
 
         .section-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-muted-color);
-            max-width: 600px;
-            margin: 0 auto 50px auto;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
         }
 
         .navbar {
-            background-color: rgba(30, 30, 30, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: background-color 0.3s ease, padding 0.3s ease;
+            background-color: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s var(--transition-ease);
+            padding: 15px 0;
         }
 
         .navbar.scrolled {
             background-color: var(--secondary-color);
-            padding: 8px 0;
+            padding: 10px 0;
         }
 
         .navbar .navbar-brand {
-            font-weight: 400;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
         }
 
         .navbar-nav .nav-link {
             font-weight: 500;
-            margin: 0 10px;
+            margin: 0 15px;
             position: relative;
-            transition: color 0.3s ease;
+            padding: 10px 0;
+            transition: all 0.3s var(--transition-ease);
         }
 
         .navbar-nav .nav-link::after {
             content: "";
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background-color: var(--primary-color);
-            transition: width 0.3s ease-in-out;
+            transition: width 0.3s var(--transition-ease);
         }
 
         .navbar-nav .nav-link:hover::after,
@@ -128,9 +131,9 @@
             position: relative;
             height: 100vh;
             width: 100%;
-            background: url("foto/IMG_0387.webp") no-repeat center center/cover;
-            color: white;
             overflow: hidden;
+            display: flex;
+            align-items: center;
         }
 
         .hero-overlay {
@@ -139,19 +142,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.65);
+            z-index: 1;
         }
 
         .hero-bg-fade {
@@ -162,14 +154,9 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             z-index: 0;
             opacity: 1;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .hero-overlay {
-            z-index: 1;
+            transition: opacity 1.5s var(--transition-ease);
         }
 
         .hero-section .container {
@@ -177,39 +164,48 @@
             z-index: 2;
         }
 
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 25px auto;
+            opacity: 0.9;
+        }
+
         .btn-brand {
             background-color: var(--primary-color);
             color: white;
             border: 2px solid var(--primary-color);
-            padding: 12px 30px;
+            padding: 15px 40px;
             border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--transition-ease);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-brand:hover {
             background-color: transparent;
             color: var(--primary-color);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .animate-on-load {
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInSlideUp 1s forwards;
+            transform: translateY(50px);
+            animation: fadeInSlideUp 1.2s var(--transition-ease) forwards;
         }
 
-        .hero-title.animate-on-load {
-            animation-delay: 0.5s;
-        }
-
-        .hero-subtitle.animate-on-load {
-            animation-delay: 0.8s;
-        }
-
-        .btn-brand.animate-on-load {
-            animation-delay: 1.1s;
-        }
+        .hero-title.animate-on-load { animation-delay: 0.3s; }
+        .hero-subtitle.animate-on-load { animation-delay: 0.6s; }
+        .btn-brand.animate-on-load { animation-delay: 0.9s; }
 
         @keyframes fadeInSlideUp {
             to {
@@ -218,22 +214,23 @@
             }
         }
 
-        .fade-in-up {
+        .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(60px);
+            transition: all 0.8s var(--transition-ease);
         }
 
-        .fade-in-up.is-visible {
+        .fade-in.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
 
+        /* Fixed Timeline Styles */
         .timeline {
             position: relative;
-            margin: 50px auto;
-            padding: 40px 0;
-            width: 100%;
+            margin: 60px auto;
+            padding: 50px 0;
+            max-width: 1200px;
         }
 
         .timeline::before {
@@ -242,84 +239,93 @@
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: var(--secondary-color);
+            width: 4px;
+            background: var(--primary-color);
             transform: translateX(-50%);
+            opacity: 0.3;
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             width: 50%;
+            opacity: 0;
+            transition: all 0.8s var(--transition-ease);
+        }
+
+        .timeline-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .timeline-item:nth-child(odd) {
-            padding-right: 50px;
+            padding-right: 60px;
             text-align: right;
-            left: 0;
+            transform: translateX(-50px);
         }
 
         .timeline-item:nth-child(even) {
-            padding-left: 50px;
+            padding-left: 60px;
             text-align: left;
-            left: 50%;
+            margin-left: 50%;
+            transform: translateX(50px);
         }
 
         .timeline-dot {
-            content: "";
             position: absolute;
             top: 20px;
-            height: 16px;
-            width: 16px;
+            height: 20px;
+            width: 20px;
             background: var(--primary-color);
             border-radius: 50%;
-            border: 3px solid var(--bg-color);
+            border: 4px solid var(--bg-color);
+            transition: transform 0.3s var(--transition-ease);
+            z-index: 2;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.3);
         }
 
         .timeline-item:nth-child(odd) .timeline-dot {
-            right: -8px;
-            transform: translate(50%, -50%);
+            right: -10px;
         }
 
         .timeline-item:nth-child(even) .timeline-dot {
-            left: -8px;
-            transform: translate(-50%, -50%);
+            left: -10px;
         }
 
         .timeline-content {
             background-color: var(--secondary-color);
             padding: 30px;
             border-radius: var(--border-radius);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s var(--transition-ease);
         }
 
         .timeline-content:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
 
         .timeline-date {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .timeline-content h3 {
-            margin-top: 0;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
         }
 
-        /* New styles for alternating content section */
         .alternating-content {
             padding: var(--section-padding);
         }
 
         .content-row {
-            margin-bottom: 100px;
+            margin-bottom: 80px;
             align-items: center;
-        }
-
-        .content-row:last-child {
-            margin-bottom: 0;
         }
 
         .content-text {
@@ -328,74 +334,132 @@
 
         .content-text h3 {
             font-size: 2.2rem;
-            margin-bottom: 20px;
             color: var(--primary-color);
+            margin-bottom: 20px;
         }
 
         .content-text p {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--text-color);
-            margin-bottom: 0;
         }
 
         .content-image {
             position: relative;
             overflow: hidden;
             border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .content-image img {
             width: 100%;
             height: 400px;
             object-fit: cover;
-            transition: transform 0.5s ease;
-            border-radius: var(--border-radius);
+            transition: transform 0.6s var(--transition-ease);
         }
 
         .content-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .content-image::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0, 169, 255, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: var(--border-radius);
-        }
-
-        .content-image:hover::after {
-            opacity: 1;
-        }
-
-        .btn-filter {
-            border: 1px solid var(--text-muted-color);
-            background-color: transparent;
-            color: var(--text-muted-color);
-            margin: 5px;
-            border-radius: 50px;
-            padding: 8px 20px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-filter:hover,
-        .btn-filter.active {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
+            transform: scale(1.1);
         }
 
         .footer-section {
             background-color: var(--secondary-color);
-            padding: 30px 0;
+            padding: 80px 0 40px;
             color: var(--text-muted-color);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li a {
+            color: var(--text-muted-color);
+            padding: 8px 0;
+            display: inline-block;
+            transition: all 0.3s var(--transition-ease);
+        }
+
+        .footer-links li a:hover {
+            color: var(--primary-color);
+            transform: translateX(8px);
+        }
+
+        .footer-social-links a {
+            color: var(--text-muted-color);
+            font-size: 1.5rem;
+            margin-right: 25px;
+            transition: all 0.3s var(--transition-ease);
+        }
+
+        .footer-social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 40px;
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar-nav .nav-link {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            /* Timeline Mobile Fix */
+            .timeline::before {
+                left: 30px;
+                transform: none;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px !important;
+                padding-right: 20px !important;
+                text-align: left !important;
+                margin-left: 0 !important;
+                transform: translateY(60px) !important;
+            }
+
+            .timeline-item.is-visible {
+                transform: translateY(0) !important;
+            }
+
+            .timeline-dot {
+                left: 20px !important;
+                right: auto !important;
+            }
+
+            .content-text {
+                padding: 20px;
+            }
+
+            .content-image img {
+                height: 300px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -405,10 +469,7 @@
 
             .hero-subtitle {
                 font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
+                max-width: 90%;
             }
 
             .section-padding {
@@ -416,75 +477,32 @@
             }
 
             .timeline {
-                margin: 30px auto;
-                padding: 20px 0;
+                margin: 40px auto;
+                padding: 30px 0;
             }
 
             .timeline::before {
-                left: 15px;
-                transform: none;
+                left: 20px;
             }
 
             .timeline-item {
-                width: 100%;
-                padding-left: 40px;
-                padding-right: 15px;
-                text-align: left !important;
-                left: 0 !important;
-                margin-bottom: 30px;
+                margin-bottom: 40px;
+                padding-left: 50px !important;
+                padding-right: 15px !important;
             }
 
             .timeline-dot {
-                left: 15px;
-                transform: translate(-50%, -50%);
-                height: 12px;
-                width: 12px;
-                top: 15px;
-            }
-
-            .timeline-item:nth-child(even) {
-                padding-left: 40px;
-                padding-right: 15px;
-            }
-
-            .timeline-item:nth-child(odd) {
-                padding-left: 40px;
-                padding-right: 15px;
+                left: 10px !important;
+                height: 16px;
+                width: 16px;
             }
 
             .timeline-content {
                 padding: 20px;
-                margin-left: 0;
-            }
-
-            .timeline-content h3 {
-                font-size: 1.3rem;
-                margin-bottom: 8px;
-            }
-
-            .timeline-date {
-                font-size: 0.85rem;
-                margin-bottom: 8px;
-            }
-
-            .timeline-content p {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-bottom: 0;
-            }
-
-            /* Mobile responsive for alternating content */
-            .alternating-content {
-                padding: 40px 0;
             }
 
             .content-row {
                 margin-bottom: 60px;
-            }
-
-            .content-text {
-                padding: 20px;
-                margin-bottom: 30px;
             }
 
             .content-text h3 {
@@ -498,34 +516,51 @@
             .content-image img {
                 height: 250px;
             }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-social-links {
+                justify-content: center;
+            }
+
+            .footer-social-links a {
+                margin: 0 15px;
+            }
         }
 
-        @media (max-width: 480px) {
-            .timeline-item {
-                padding-left: 35px;
-                padding-right: 10px;
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn-brand {
+                padding: 12px 30px;
+                font-size: 0.9rem;
             }
 
             .timeline::before {
-                left: 12px;
+                left: 15px;
+            }
+
+            .timeline-item {
+                padding-left: 40px !important;
+                padding-right: 10px !important;
             }
 
             .timeline-dot {
-                left: 12px;
-                height: 10px;
-                width: 10px;
-            }
-
-            .timeline-content {
-                padding: 15px;
+                left: 8px !important;
+                height: 14px;
+                width: 14px;
             }
 
             .timeline-content h3 {
-                font-size: 1.2rem;
-            }
-
-            .timeline-content p {
-                font-size: 0.9rem;
+                font-size: 1.4rem;
             }
 
             .content-text h3 {
@@ -536,100 +571,8 @@
                 height: 200px;
             }
         }
-
-        .footer-section {
-            background: var(--secondary-color);
-            padding: 80px 0 40px 0;
-            color: var(--text-muted-color);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-family: var(--font-family);
-        }
-
-        .footer-title {
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li a {
-            color: var(--text-muted-color);
-            text-decoration: none;
-            padding: 5px 0;
-            display: inline-block;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .footer-links li a:hover {
-            color: var(--primary-color);
-            transform: translateX(5px);
-        }
-
-        .footer-social-links a {
-            color: var(--text-muted-color);
-            font-size: 1.2rem;
-            margin-right: 20px;
-            display: inline-block;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .footer-social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 30px;
-            margin-top: 40px;
-        }
-
-        [data-animation] {
-            opacity: 0;
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-            [data-animation="fade-up"] {
-                transform: translateY(40px);
-            }
-
-            .is-visible {
-                opacity: 1;
-                transform: none !important;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            [data-animation] {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .footer-section {
-                text-align: center;
-            }
-
-            .footer-social-links {
-                justify-content: center;
-            }
-
-            .footer-social-links a {
-                margin: 0 10px;
-            }
-        }
     </style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -641,7 +584,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#hero">Beranda</a>
+                        <a class="nav-link active" href="#hero">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="galeri.html">Galeri</a>
@@ -653,23 +596,26 @@
             </div>
         </div>
     </nav>
+
     <header id="hero" class="hero-section">
         <div class="hero-bg-fade"></div>
         <div class="hero-overlay"></div>
-        <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
+        <div class="container text-center">
             <h1 class="hero-title animate-on-load">KELAS RPL 1</h1>
             <p class="hero-subtitle animate-on-load">
-                Sebuah Perjalanan Tiga Tahun Penuh Karya dan Cerita di SMKN 64
-                Jakarta.
+                Sebuah Perjalanan Tiga Tahun Penuh Karya dan Cerita di SMKN 64 Jakarta.
             </p>
-            <a href="#sejarah" class="btn btn-brand mt-4 animate-on-load">Telusuri Kisah Kami</a>
+            <a href="#sejarah" class="btn btn-brand mt-4 animate-on-load">
+                <i class="bi bi-book"></i> Telusuri Kisah Kami
+            </a>
         </div>
     </header>
+
     <main>
         <section id="sejarah" class="section-padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center">
+                    <div class="col-12 text-center fade-in">
                         <h2 class="section-title">Lintas Waktu</h2>
                         <p class="section-subtitle">
                             Momen-momen penting dari kelas 10 hingga 12.
@@ -677,8 +623,8 @@
                     </div>
                 </div>
                 <div class="timeline">
-                    <div class="timeline-item fade-in-up">
-                        <!-- <div class="timeline-dot"></div> -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <h3>Kelas 10: Awal Mula</h3>
                             <div class="timeline-date">2022 - 2023</div>
@@ -689,8 +635,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="timeline-item fade-in-up">
-                        <!-- <div class="timeline-dot"></div> -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <h3>Kelas 11: Mulai Serius Belajar</h3>
                             <div class="timeline-date">2023 - 2024</div>
@@ -701,8 +647,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="timeline-item fade-in-up">
-                        <!-- <div class="timeline-dot"></div> -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <h3>Kelas 12: Puncak Perjuangan</h3>
                             <div class="timeline-date">2024 - 2025</div>
@@ -720,39 +666,40 @@
         <section id="Pengajar" class="alternating-content section-bg">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center">
-                        <h2 class="section-title">Pengajar RPL 1</h2>
+                    <div class="col-12 text-center fade-in">
+                        <h2 class="section-title">Di Balik Kode</h2>
                         <p class="section-subtitle">
-                            Mengenal sosok-sosok yang membimbing perjalanan kami di dunia programming.
+                            Membangun bukan dari batu bata, tapi dari baris kode yang penuh makna
                         </p>
                     </div>
                 </div>
 
-                <div class="row content-row fade-in-up">
+                <div class="row content-row fade-in">
                     <div class="col-lg-6">
                         <div class="content-text">
                             <h3>Perjalanan Coding</h3>
                             <p>
-                                Dari yang awalnya tidak tahu apa-apa tentang programming,
-                                kini kami telah mampu membuat aplikasi web yang kompleks.
-                                Setiap baris kode yang kami tulis adalah bukti dedikasi
-                                dan kerja keras selama tiga tahun di RPL. JavaScript,
-                                PHP, dan MySQL bukan lagi bahasa asing bagi kami.
+                                Dari yang dulu hanya menatap layar kosong tanpa tahu harus menulis apa,
+                                kini kami merangkai baris demi baris kode, membangun aplikasi web dengan logika
+                                yang matang dan desain yang bernyawa. Setiap karakter yang kami ketik adalah
+                                jejak dari perjalanan panjang—tiga tahun belajar, gagal, mencoba lagi, dan terus tumbuh.
+                                JavaScript, PHP, dan MySQL bukan lagi bahasa asing; mereka kini seperti teman lama yang
+                                setia menemani di setiap malam lembur dan kopi yang mendingin.
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="content-image">
-                            <img src="https://drive.google.com/thumbnail?id=1uEMBrKarGviVx2S1bmBbjHcmrZd8WmzF&sz=w1000"
+                            <img src="https://drive.google.com/thumbnail?id=12fjyl-g1kNg1GmLhcdxXtgs7cGs5I_tR&sz=w1000"
                                 alt="Perjalanan Coding" />
                         </div>
                     </div>
                 </div>
 
-                <div class="row content-row fade-in-up">
+                <div class="row content-row fade-in">
                     <div class="col-lg-6 order-lg-1 order-2">
                         <div class="content-image">
-                            <img src="https://drive.google.com/thumbnail?id=1uEMBrKarGviVx2S1bmBbjHcmrZd8WmzF&sz=w1000"
+                            <img src="https://drive.google.com/thumbnail?id=1jBpLSljmeXW_Zc0_Ij3PUKWRiuLsoOXq&sz=w1000"
                                 alt="Kebersamaan Tim" />
                         </div>
                     </div>
@@ -760,26 +707,26 @@
                         <div class="content-text">
                             <h3>Kebersamaan Tim</h3>
                             <p>
-                                Lebih dari sekadar teman sekelas, kami adalah sebuah tim
-                                yang solid. Setiap tugas kelompok, setiap project, dan
-                                setiap tantangan yang dihadapi selalu diselesaikan
-                                bersama-sama. Inilah yang membuat RPL 1 begitu istimewa -
-                                semangat gotong royong dalam dunia digital.
+                                Lebih dari sekadar teman sekelas, kami adalah sebaris cerita 
+                                yang saling melengkapi. Dalam setiap tugas, proyek, hingga 
+                                tantangan yang datang silih berganti, kami melangkah bersama—bukan 
+                                sekadar menyelesaikan, tapi saling menguatkan. RPL 1 bukan hanya nama, tapi ruang hangat tempat semangat
+                                gotong royong hidup di tengah dunia digital yang dingin.
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="row content-row fade-in-up">
+                <div class="row content-row fade-in">
                     <div class="col-lg-6">
                         <div class="content-text">
                             <h3>Masa Depan Cerah</h3>
                             <p>
-                                Dengan bekal ilmu yang telah kami dapatkan, kami siap
-                                menghadapi dunia kerja maupun melanjutkan ke jenjang
-                                yang lebih tinggi. RPL 1 bukan hanya mengajarkan tentang
-                                kode, tetapi juga tentang problem solving, kreativitas,
-                                dan kerja sama yang akan berguna sepanjang hidup.
+                                Dengan ilmu di tangan dan semangat yang nggak bisa dibanting, kami bukan cuma siap
+                                —kami pengen dunia lihat siapa kami. RPL 1 nggak cuma ngajarin cara ngetik kode sampai subuh,
+                                tapi juga gimana caranya tetap waras di tengah error, nyari jalan walaupun gak sejalan,
+                                dan tetap solid walau kepala udah ngebul. Kerja? Kuliah? lahh maju be, ora takut ini.
+                                Kami RPL 1, dan di balik layar monitor, kami udah siap bikin gebrakan.
                             </p>
                         </div>
                     </div>
@@ -797,47 +744,36 @@
     <footer class="footer-section">
         <div class="container">
             <div class="row gy-5">
-                <div class="col-lg-4 col-md-12" data-animation="fade-up">
+                <div class="col-lg-4 col-md-12 fade-in">
                     <h5 class="footer-title">RPL 1 SMKN 64 '4</h5>
                     <p class="text-muted-color">
-                        Membangun masa depan melalui baris kode dan kebersamaan. Satu angkatan, satu keluarga.
+                        Masa depan kami debug bareng. Kode jalan, tawa lanjut. RPL 1—satu keluarga, tahan error.
                     </p>
                 </div>
-
-                <div class="col-lg-2 col-md-4" data-animation="fade-up" style="transition-delay: 0.1s;">
+                <div class="col-lg-2 col-md-4 fade-in" style="transition-delay: 0.1s;">
                     <h5 class="footer-title">Navigasi</h5>
                     <ul class="footer-links">
-                        <li><a data-hover href="#hero">Beranda</a></li>
-                        <li><a data-hover href="galeri.html">Galeri</a></li>
-                        <li><a data-hover href="angkatan.html">Angkatan</a></li>
+                        <li><a href="#hero">Beranda</a></li>
+                        <li><a href="galeri.html">Galeri</a></li>
+                        <li><a href="angkatan.html">Angkatan</a></li>
                     </ul>
                 </div>
-
-                <div class="col-lg-3 col-md-4" data-animation="fade-up" style="transition-delay: 0.2s;">
+                <div class="col-lg-3 col-md-4 fade-in" style="transition-delay: 0.2s;">
                     <h5 class="footer-title">Halaman Lain</h5>
                     <ul class="footer-links">
-                        <li><a data-hover href="galeri.html">Galeri Kenangan</a></li>
-                        <li><a data-hover href="angkatan.html">Buku Angkatan</a></li>
+                        <li><a href="galeri.html">Galeri Kenangan</a></li>
+                        <li><a href="angkatan.html">Buku Angkatan</a></li>
                     </ul>
                 </div>
-
-                <div class="col-lg-3 col-md-4" data-animation="fade-up" style="transition-delay: 0.3s;">
+                <div class="col-lg-3 col-md-4 fade-in" style="transition-delay: 0.3s;">
                     <h5 class="footer-title">Ikuti Kami</h5>
                     <div class="footer-social-links d-flex">
-                        <a data-hover href="https://www.instagram.com/xiierpeelone" aria-label="Instagram"
-                            target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/xiierpeelone" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <!-- <a data-hover href="#" aria-label="Github">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a data-hover href="#" aria-label="Twitter">
-                            <i class="bi bi-twitter-x"></i>
-                        </a> -->
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom text-center">
                 <p class="small text-muted-color mb-0">
                     © 2025 RPL 1 SMKN 64 Jakarta.
@@ -848,46 +784,48 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", () => {
+            // Navbar Scroll Effect
             const navbar = document.querySelector(".navbar");
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add("scrolled");
-                } else {
-                    navbar.classList.remove("scrolled");
-                }
-            });
-            const scrollObserver = new IntersectionObserver(
+            const updateNavbar = () => {
+                navbar.classList.toggle("scrolled", window.scrollY > 50);
+            };
+            window.addEventListener("scroll", updateNavbar);
+            updateNavbar();
+
+            // Scroll Animations
+            const observer = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add("is-visible");
+                            observer.unobserve(entry.target);
                         }
                     });
                 },
-                {
-                    threshold: 0.1,
-                }
+                { rootMargin: "0px 0px -10% 0px" }
             );
-            document.querySelectorAll(".fade-in-up").forEach((element) => {
-                scrollObserver.observe(element);
-            });
+            document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+
+            // Smooth Scroll for Anchor Links
             document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-                anchor.addEventListener("click", function (e) {
+                anchor.addEventListener("click", (e) => {
                     e.preventDefault();
-                    if (document.querySelector(this.getAttribute("href"))) {
-                        document.querySelector(this.getAttribute("href")).scrollIntoView({
-                            behavior: "smooth",
-                        });
+                    const target = document.querySelector(anchor.getAttribute("href"));
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth", block: "start" });
                     }
                 });
             });
-            const heroBackgrounds = [
-                "foto/IMG_0387.webp",
-                "foto/IMG_0138.webp",
-                "foto/DSC_0587.webp",
-                "foto/IMG_2251.webp",
-            ];
+
+            const backgrounds = [
+            'url("https://drive.google.com/thumbnail?id=1NZNqwT9so24cCL4MsyTYygURjYr121Dw&sz=w1920")',
+            'url("https://drive.google.com/thumbnail?id=1l2Wz7pCn_FfxMHgrx1L0uhghFjHHjUDi&sz=w1920")',
+            'url("https://drive.google.com/thumbnail?id=1CM0SJo46e_L7wqGm5UZleaDkbJPuqEBT&sz=w1920")',
+            'url("https://drive.google.com/thumbnail?id=1bH7mL0Z2p3q2f5g6h7j8k9l0m1n2o3p4&sz=w1920")',
+            'url("https://drive.google.com/thumbnail?id=1-RAG0AjNUDvSVA3E5M5HaPmdT3NrlMcF&sz=w1920")',
+            'url("https://drive.google.com/thumbnail?id=1uyDxoUdYM3Lpf1U8Xf1kjnP92oSBtsCo&sz&sz=w1920")'
+        ];
             let currentIndex = 0;
             const heroFadeEl = document.querySelector(".hero-bg-fade");
             heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
@@ -897,51 +835,8 @@
                 setTimeout(() => {
                     heroFadeEl.style.backgroundImage = `url('${heroBackgrounds[currentIndex]}')`;
                     heroFadeEl.style.opacity = 1;
-                }, 1000);
-            }, 4000);
-            const imageModal = document.getElementById("imageModal");
-            if (imageModal) {
-                const modalImage = document.getElementById("modalImage");
-                const modalTitle = document.getElementById("imageModalLabel");
-                const modalDesc = document.getElementById("modalDesc");
-                document
-                    .querySelectorAll('[data-bs-target="#imageModal"]')
-                    .forEach((el) => {
-                        el.addEventListener("click", function () {
-                            const imgSrc = this.getAttribute("data-img");
-                            const title = this.getAttribute("data-title");
-                            const desc = this.getAttribute("data-desc");
-                            modalImage.src = imgSrc;
-                            modalTitle.textContent = title;
-                            modalDesc.textContent = desc;
-                        });
-                    });
-            }
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-
-            function initScrollAnimations() {
-                const animatedElements = document.querySelectorAll('[data-animation]');
-
-                if (animatedElements.length === 0) return;
-
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    rootMargin: '0px 0px -10% 0px'
-                });
-
-                animatedElements.forEach(el => observer.observe(el));
-            }
-
-            initScrollAnimations();
-
+                }, 1500);
+            }, 5000);
         });
     </script>
 </body>
